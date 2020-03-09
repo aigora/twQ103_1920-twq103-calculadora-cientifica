@@ -1,6 +1,6 @@
 # Título del trabajo
 
-Descripción breve del proyecto a realizar (2-3 frases).
+Calcular operaciones, dar informacion sobre la tabla preiodica, registrar ecuaciones, ...
 
 ## Integrantes del equipo
 
@@ -9,4 +9,6 @@ Ignacio Vegas @ivegasgQ103
 
 ## Objetivos del trabajo
 
-Lista de los objetivos que se persiguen con el trabajo propuesto.
+Utilizar funciones avanzadas de C y  ser una herramienta de uso facil para los estudiantes
+
+
