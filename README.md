@@ -1,4 +1,4 @@
-# Título del trabajo
+# Calculadora Científica
 
 Calcular operaciones, dar informacion sobre la tabla preiodica, registrar ecuaciones, ...
 
