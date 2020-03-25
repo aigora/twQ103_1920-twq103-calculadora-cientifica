@@ -1,9 +1,9 @@
 #include<stdio.h>
 #include<string.h>
-#include<math.io>
+#include<math.h>
 
 //Menu del trabajo
-void main()
+int main()
 {
 	char ;
 	int option=0;
@@ -39,4 +39,6 @@ void main()
 		}
 	}
 	while(option!=0);
+	
+	return 0;
 }
