@@ -6,7 +6,7 @@
 #include<string.h>
 int main(){
 	
-	
+	//asdfg
 	
 	
 	return 0;
