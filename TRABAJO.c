@@ -6,10 +6,10 @@
 int main()
 {	
 	//Parte de MATRICES
-		int filas=0, columnas=0,filas1,columnas1,filas2,columnas2,filas3,columnas3;
+		int filas, columnas, filas1,columnas1,filas2,columnas2,filas3,columnas3;
 		int i,j; //contadores
-		char operacion;
-		float matriz1[filas][columnas],matriz2[filas][columnas],matrizResultado[filas][columnas];
+		int operacion;
+		int m1[filas][columnas],m2[filas][columnas],m3[filas][columnas];
 		//multiplicacion
 		float MatrizM1[filas1][columnas1],MatrizM2[filas2][columnas2],MatrizM3[filas3][columnas3];
 		int k,L;
@@ -20,9 +20,9 @@ int main()
 	
 	do
 	{	
-		printf("Elija una opcion: 0-Apagar Sistema\n 1-Operaciones Basicas\n 2-Operaciones con Vectores\n 3-Operaciones con Matrices\n 4-Constantes numericas\n 5-Tabla Periodica\n 6-Sistemas de ecuaciones\n 7-Operaciones complejas\n\n");
+		printf("Elija una opcion: \n 0-Apagar Sistema\n 1-Operaciones Basicas\n 2-Operaciones con Vectores\n 3-Operaciones con Matrices\n 4-Constantes numericas\n 5-Tabla Periodica\n 6-Sistemas de ecuaciones\n 7-Operaciones complejas\n\n");
 		scanf("%d",&option);
-	if((option<=0)||(option>=7))
+	if((option<0)||(option>7))
 		{
 			printf("Error 404 Not Found");
 		}
@@ -38,66 +38,78 @@ int main()
 				case 2: printf("Operaciones con Vectores\n");
 				break;
 				case 3: printf("Operaciones con Matrices\n");
+				
 					
-				
-				
-				
-					printf("Introduzca numero de filas y columnas: \n");
 					printf("(Tenga en cuenta que tiene que ser de las mismas dimensiones para todas las operaciones excepto para la multiplicacion)\n");
-					scanf("%d %d", &filas, &columnas);
+					
 	
  					do
- 					{	printf("Introduza los elementos de las matrices:\n");
- 		
- 					//Matriz 1
+ 					{						
+ 					printf("Introduzca el tipo de operacion: suma(1), resta(2) o multiplicacion (3) \n");
+ 					scanf("%d", &operacion);
+ 					
+					switch(operacion)
+ 					{
+					
+					case 1:
+						printf("Introduzca numero de filas y columnas: \n");
+						scanf("%d %d", &filas, &columnas);
+						printf("Introduza los elementos de las matrices:\n"); 
+						//Matriz 1
 						for(i=0; i<filas; i++)
  						{	
  							for(j=0; j<columnas; j++)
  							{
 								printf("Introduce elemento de la matriz1[%d][%d]\n", i+1, j+1);
-								scanf("%f", &matriz1[i][j]);
+								scanf("%d", &m1[i][j]);
 							}
 						}
-					//Matriz 2
+						printf("\n");
+						
+						//Matriz 2
+						for(i=0; i<filas; i++)
+ 						{	
+ 							for(j=0; j<columnas; j++)
+ 							{
+								printf("Introduce elemento de la matriz1[%d][%d]\n", i+1, j+1);
+								scanf("%d", &m2[i][j]);
+							}
+						}
+						//Matriz Resultado
+						for(i=0; i<filas; i++)
+ 						{	
+ 							for(j=0; j<columnas; j++)
+ 							{
+								m3[i][j]= m1[i][j] + m2[i][j];
+							}
+						}
+						for(i=0; i<filas; i++)
+ 						{	
+ 							for(j=0; j<columnas; j++)
+ 							{								
+								printf(" %d",m3[i][j]);
+							}
+							printf("\n");
+						}
+						
+					
+						break;		
+ 						
+					case 2:
+					
 						for(i=0; i<filas; i++)
  						{
  							for(j=0; j<columnas; j++)
  							{
-								printf("Introduce elemento de la matriz2[%d][%d]\n", i+1, j+1);
-								scanf("%f", &matriz2[i][j]);
+								m3[i][j]= m2[i][j]-m1[i][j];
+								printf("Matriz Resultado [%d][%d]=%f\n", i+1, j+1, m3[i][j]);
 							}
 						}
+						break;		
+					
 		
- 					printf("Introduzca el tipo de operacion: suma(s), resta(r) o multiplicacion (m) \n");
- 					scanf("%c", operacion);
- 		
- 					if(operacion=='s')
- 					{
- 						for(i=0; i<filas; i++)
- 						{
- 							for(j=0; j<columnas; j++)
- 							{
-								matrizResultado[i][j]= matriz1[i][j]+matriz2[i][j];
-								printf("Matriz Resultado [%d][%d]=%f\n", i+1, j+1, matrizResultado[i][j]);
-							}
-						}		
- 					}
- 					
-					else if(operacion=='r')
-					{
-						for(i=0; i<filas; i++)
- 						{
- 							for(j=0; j<columnas; j++)
- 							{
-								matrizResultado[i][j]= matriz2[i][j]-matriz1[i][j];
-								printf("Matriz Resultado [%d][%d]=%f\n", i+1, j+1, matrizResultado[i][j]);
-							}
-						}		
-					}
-		
-					else if(operacion=='m')
-					{ 
-		
+					case 3:
+							
 						printf("Para la siguiente operacion se requiere que numero de columnas de matriz 1= numero de filas de matriz 2.\n");
 						printf("Se requiere que imprima los datos otra vez:\n");
 						printf("Introduzca numero de filas y columnas de la matriz 1: \n");
@@ -157,7 +169,11 @@ int main()
 						{
 							printf("ERROR: *requisito no cumplido*.");
 						}	
+					
+					break;				
 					}
+ 		
+ 					
  					}
 				while(filas>100 || columnas>100);	
 				
