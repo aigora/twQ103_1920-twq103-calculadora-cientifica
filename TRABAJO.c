@@ -16,14 +16,13 @@ int main()
 		float sum;
 	//FIN DE PARTE DE MATRICES
 	 
-	char ;
 	int option=0;
 	
 	do
 	{	
-		printf("Elija una opcion: 0-Apagar Sistema\n,1-Operaciones Basicas\n,2-Operaciones con Vectores\n,3-Constantes numericas\n,4-Tabla Periodica\n,5-Sistemas de ecuaciones\n,6-Operaciones complejas\n\n");
+		printf("Elija una opcion: 0-Apagar Sistema\n 1-Operaciones Basicas\n 2-Operaciones con Vectores\n 3-Operaciones con Matrices\n 4-Constantes numericas\n 5-Tabla Periodica\n 6-Sistemas de ecuaciones\n 7-Operaciones complejas\n\n");
 		scanf("%d",&option);
-	if((option<0)||(option>7))
+	if((option<=0)||(option>=7))
 		{
 			printf("Error 404 Not Found");
 		}
@@ -39,7 +38,10 @@ int main()
 				case 2: printf("Operaciones con Vectores\n");
 				break;
 				case 3: printf("Operaciones con Matrices\n");
-				{
+					
+				
+				
+				
 					printf("Introduzca numero de filas y columnas: \n");
 					printf("(Tenga en cuenta que tiene que ser de las mismas dimensiones para todas las operaciones excepto para la multiplicacion)\n");
 					scanf("%d %d", &filas, &columnas);
@@ -67,7 +69,7 @@ int main()
 						}
 		
  					printf("Introduzca el tipo de operacion: suma(s), resta(r) o multiplicacion (m) \n");
- 					scanf("%c",operacion);
+ 					scanf("%c", operacion);
  		
  					if(operacion=='s')
  					{
@@ -158,15 +160,21 @@ int main()
 					}
  					}
 				while(filas>100 || columnas>100);	
-				}
 				
 				break;
-				case 4: printf("Constantes numericas\n");
+				
+				
+				case 4:printf("Constantes numericas\n");	
 				break;
+			
 				case 5: printf("Tabla Periodica\n");
-				break;
+					break;
+				
+				
+			
 				case 6: printf("Sistemas de ecuaciones\n");
 				break;
+			
 				case 7: printf("Operaciones complejas\n");
 				break;
 			}
