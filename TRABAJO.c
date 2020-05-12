@@ -2,7 +2,6 @@
 #include<string.h>
 #include<math.h>
 
-
 struct TElemento 
 {
 	char nombre[20];
@@ -68,7 +67,6 @@ int main()
 	
 	return 0;
 }
-
 
 
 int operacionesVectores(){
@@ -176,7 +174,7 @@ int operacionesMatrices(){
 	
 	int i,j;
 	int filas1=0,filas2=0,filas3=0,columnas1=0,columnas2=0,columnas3=0;
-	int m1[filas1][columnas1],m2[filas2][columnas2],m3[filas3][columnas3];
+	int m1[100][100],m2[100][100],m3[100][100];
 	int a,aux,contador;
 
 	printf("Introduzca las filas y columans de la matriz1\n");
@@ -266,7 +264,6 @@ int operacionesMatrices(){
 }
 	
 }
-
 
 
 int datosTablaPeriodica(){
@@ -502,7 +499,6 @@ int datosTablaPeriodica(){
 	}
 	
 }
-
 
 
 int operacionesBasicas(){
