@@ -228,7 +228,7 @@ int operacionesMatrices(){
 				for(j=0; (j<columnas1)&&(i<columnas2); j++)
 					{
 						m3[i][j] = m1[i][j] - m2[i][j];
-						printf("%d", m3[i][j]);
+						printf("%d ", m3[i][j]);
 					}
 					printf("\n");
 				}
