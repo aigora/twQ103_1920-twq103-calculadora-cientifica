@@ -143,7 +143,11 @@ int main()
 					x2=(-B+sqrt(pow(B,2)-4*A*C))/(2*A);
 					printf("x1: %f\n",x1);
 					printf("x2: %f\n",x2);
-				}	
+				}else if ((pow(B,2))-4*A*C == 0){
+					x1= (-B / (2*A));
+					printf("\nSolucion unica: %f",x1);
+				}
+					
 			break;
 			
 			case 8://Me he equivocado no queria encender la calculadora
