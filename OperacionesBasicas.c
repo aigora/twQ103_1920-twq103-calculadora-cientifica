@@ -6,12 +6,14 @@ int main()
 	int ope,ope1;
 	int i;
 	float numeros[100],x,y;
+	float x1,x2;
+	float A=0,B=0,C=0;
 	int N;
 	float sum,res,mult,div,med,desv,sum2;
 	do
 	{
 		printf("NOTA: TENGA EN CUENTA QUE LOS DECIMALES SE ESCRIBEN CON '.' Y NO ','\n");
-		printf("Introduzca el tipo de operación que quiere hacer: \n 1.-Suma 2.-Resta 3.-Multiplicacion 4.-Division 5.-Media 6.-Desviacion\n 7.-Me he equivocado, no queria encender la calculadora\n");
+		printf("Introduzca el tipo de operación que quiere hacer: \n \t 1.-Suma\n \t 2.-Resta\n \t 3.-Multiplicacion\n \t 4.-Division\n \t 5.-Media\n \t 6.-Desviacion\n \t 7.-Ecuacion de segundo grado \n \t 8.-Me he equivocado, no queria encender la calculadora\n");
 		scanf("%d",&ope1);
 		
 		switch(ope1)
@@ -117,7 +119,34 @@ int main()
 				printf("La media es: %f.\n",med);
 			break;
 			
-			case 7://Me he equivocado no queria encender la calculadora
+			
+			case 7://Ecuacion de  segundo grado
+				printf("Ha elegido ecuacion de segundo grado.\n\n");
+				
+				printf("Introduzca datos de Ecuacion de Segundo grado\n Ax^2+Bx+C=0\n");
+				scanf(" %f %f %f",&A,&B,&C);
+				//fflush(stdin);
+		
+				if(((pow(B,2))-4*A*C)<0)
+				{
+					printf("Sus resultados estan en el espectro de numeros imaginarios:\n"),
+					x1=sqrt((pow(B,2)-4*A*C)/(-1));
+					x2=sqrt((pow(B,2)-4*A*C)/(-1));
+	
+					printf("x1: -%f-%f i\n",B/(2*A),x1/(2*A));
+					printf("x2: -%f+%f i\n",B/(2*A),x2/(2*A));
+				}
+	 			else if(((pow(B,2))-4*A*C)>0)
+				{
+					printf("Sus resultados estan en el espectro de numeros reales:\n"),
+					x1=(-B-sqrt(pow(B,2)-4*A*C))/(2*A);
+					x2=(-B+sqrt(pow(B,2)-4*A*C))/(2*A);
+					printf("x1: %f\n",x1);
+					printf("x2: %f\n",x2);
+				}	
+			break;
+			
+			case 8://Me he equivocado no queria encender la calculadora
 				printf("Apagando la calculadora...\n");
 			break;
 			
