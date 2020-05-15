@@ -14,11 +14,11 @@ int operacionesVectores();
 int operacionesMatrices();
 int datosTablaPeriodica();
 int operacionesBasicas();
+int operacionesComplejas();
 
 //Menu del trabajo
 int main()
-{	
-	 
+{		 
 	int option=0;
 	
 	do
@@ -59,6 +59,7 @@ int main()
 				break;
 				
 				case 7: printf("Operaciones complejas\n");
+					operacionesComplejas();
 				break;
 			}
 		}
@@ -220,7 +221,7 @@ int operacionesMatrices(){
 				}
 			
 			break;
-	case 2:
+		case 2:
 			if((filas1==filas2) && (columnas1==columnas2))
 			{
 			for(i=0; (i<filas1)&&(i<filas2); i++)
@@ -246,10 +247,8 @@ int operacionesMatrices(){
 						{
 							aux = aux + m1[i][contador] * m2[contador][j];
 							m3[i][j]= aux;
-						}
-							
-					}
-					
+						}		
+					}					
 				}	
 			}
 			for(i=0; i<filas1; i++)
@@ -630,7 +629,116 @@ int operacionesBasicas(){
 	
 }
 
+int operacionesComplejas(){
+	int i; //bucle for
+	float a, ai, b, bi, bii; // parametros de las partes reales e imaginarias
+	int op,op1; // opciones de los bucles do - while
+	float sum=0, sumi=0, dif=0, difi=0, res=0, resi=0; // suma, resta y multiplicacion
+	float numerador=0, numeradori=0, denominador=0; // division
+	float modulo1=0, modulo2=0, argumento1=0, argumento2=0; // pasar a coordenadas polares
+	float preal=0, pimaginaria=0, x=0, y=0; // pasar a coordenadas cartesianas
+	do // bucle para volver a operar en esta seccion si quiere el usuario
+	{
+		
+		do { // bucle para repetir las opciones si se equivoca el usuario
+		printf("Que desea hacer:\n");
+	printf("1. sumar\n 2. restar\n 3. multiplicar\n 4. dividir\n 5. Pasar a coordenadas polares \n 6. Pasar a coordenadas artesianas");
+		scanf("%d",&op);
+	}while(op>6 || op<0);
+	
+	if (op != 6){ // condicional para operar con numeros com`lejos de la forma a + ai o a - ai
+		
+		//primer numero complejo
+		printf("Introduzca la parte real  y la parte imaginaria del primer numero complejo:\n");
+		scanf("%f %f",&a, &ai);
+		
+		//segundo numero complejo
+		printf("Introduzca la parte real  y la parte imaginaria del segundo numero complejo:\n");
+		scanf("%f %f",&b, &bi);
+	
+		switch (op)
+		{
+			case 1: //suma
+			sum = a + b; //suma de la parte real
+			sumi= ai + bi; // suma de la parte imaginaria
+			if(sumi>=0){
+				printf("%.4f + %.4fi\n", sum, sumi);
+			}else{
+				printf("%.4f - %.4fi\n", sum, sumi);
+			}	
+			break;
+						
+			case 2://resta
+			dif = a - b; //resta de la parte real
+			difi= ai - bi; // resta de la parte imaginaria
+			if(difi>=0){
+				printf("Resultado: %.4f+%.4fi\n", dif, difi);
+			}else{
+				printf("Resultado: %.4f %.4fi\n", dif, difi);
+			}	
+			break;
+			
+			case 3://multiplicacion
+				res = a*b -ai*bi; //parte real de las operaciones
+				resi = a*bi + ai*b; //parte imaginaria de las operaciones
+								
+				if (resi<0){
+					printf("Resultado: %.4f %.4fi\n",res, resi);
+				}else{
+					printf("Resultado: %.4f + %.4fi\n",res, resi);
+				}							
+			break;
+			
+			case 4: //division se opera de la siguiente forma: (a+ai) / (b+bi)
+				if(bi>=0){ //se debe multiplicar la fraccion por el conjugado del denominador
+					bii = -bi;
+				}
+				numerador = a*b - ai*bii;//parte real
+				numeradori = ai*b + a*bii;//parte imaginaria
+				denominador = pow(b,2) + pow(bi,2);
+				
+				
+				if(numeradori<0){
+					printf("Resultado: %.4f %.4fi",numerador/denominador, numeradori/denominador);
+				}else {
+					printf("Resultado: %.4f + %.4fi",numerador/denominador, numeradori/denominador);
+				}
+			break;
+			
+			
+			case 5: // pasar el numero complejo a coordenadas polares
+				
+				modulo1= sqrt(pow(a,2) + pow(ai,2));
+				argumento1 = atan(ai/a) * (180.0/3.141592);
+				modulo2= sqrt(pow(b,2) + pow(bi,2));
+				argumento2 = atan(bi/b) * (180.0/3.141592);
+				
+				printf("%.4f | %.4f%c \n", modulo1, argumento1,248);
+				printf("%.4f | %.4f%c \n", modulo2, argumento2,248);	
+			break;
+	}
+	
+			} else { // pasar de coordenadas polares a cartesianas
+				fflush(stdin);
+				printf("Introduzca el modulo y argumento (en grados):\n");
+	
+				scanf("%f %f",&a, &ai);
+		
+				preal = a * cos(ai * (3.141592/180.0)); // se multiplica los grados por (PI/180) porque el coseno lo da en radianes
+				pimaginaria = a * sin(ai * (3.141592/180.0));
 
+				if(pimaginaria<0){
+					printf("%.4f %.4fi\n", preal, pimaginaria);
+				}else {
+					printf("%.4f + %.4fi\n", preal, pimaginaria);
+				}
+			}
+
+	printf("\nQuieres salir?\n 1.Si\n 2.No");
+	scanf("%d",&op1);
+	}while(op1==2);
+	printf("\nHasta pronto...");
+}
 
 
 
