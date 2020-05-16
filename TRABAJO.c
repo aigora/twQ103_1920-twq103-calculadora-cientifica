@@ -321,11 +321,12 @@ int datosTablaPeriodica(){
 					fprintf(pfentrada,"\t  %.2f \n", tabla[i].masa);
 					
 					printf("Desea repetir la operacion? 1.-Si\t 2.-No\n");	
+					scanf("%d",&option2b);
 					fflush(stdin);
 				}			
 			fclose(pfentrada);
 			}
-			while(option2a!=2);
+			while(option2b!=2);
 		}
 		else
 		{
