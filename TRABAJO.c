@@ -734,10 +734,10 @@ int operacionesComplejas(){
 				}
 			}
 
-	printf("\nQuieres salir?\n 1.Si\n 2.No");
+	printf("\nQuieres salir?\n 1.Si\n 2.No\n");
 	scanf("%d",&op1);
 	}while(op1==2);
-	printf("\nHasta pronto...");
+	printf("\nHasta pronto...\n\n");
 }
 
 
