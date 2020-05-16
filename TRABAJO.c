@@ -295,7 +295,7 @@ int datosTablaPeriodica(){
 				printf("Cuantos elementos quiere registrar?\n");
 				scanf("%d",&N);
 	
-				pfentrada=fopen("tabla1.txt","w");	
+				pfentrada=fopen("tabla1.txt","a");	
 				//pido los datos al usuario sobre los elementos
 				for(i=0;i<N;i++)
 				{
