@@ -5,7 +5,7 @@ int ConstantesNum();
 struct TConstante 
 {
 	char nombre[50];
-	float numero;
+	char numero[50];
 };
 int main()
 {
@@ -36,7 +36,7 @@ int ConstantesNum()
 				{    		
 					printf("Cuantas constantes quiere registrar?\n");
 					scanf("%d",&N);
-					pfentrada=fopen("tabla2.txt","w");	
+					pfentrada=fopen("tabla2.txt","a");	
 					//pido los datos al usuario sobre los elementos
 
 					for(i=0;i<N;i++)
@@ -48,8 +48,8 @@ int ConstantesNum()
 						fflush(stdin);
 					
 						printf("Introduzca el numero: \t");
-						scanf("%f", tabla[i].numero);	
-						fprintf(pfentrada,"\t  %f ", tabla[i].numero);
+						scanf("%s", tabla[i].numero);	
+						fprintf(pfentrada,"\t  %s ", tabla[i].numero);
 						fflush(stdin);
 				}			
 
@@ -67,9 +67,9 @@ int ConstantesNum()
 					
 					j=0;
 					printf("Nombre \t\t numero \n");
-					while(fscanf(pfentrada,"%s %f", tabla[j].nombre, tabla[j].numero)!=EOF)
+					while(fscanf(pfentrada,"%s %s", tabla[j].nombre, tabla[j].numero)!=EOF)
 					{
-						printf("%s\t\t %f\n", tabla[j].nombre,tabla[j].numero);
+						printf("%s\t\t %s\n", tabla[j].nombre,tabla[j].numero);
 						j++;
 						
 					}
@@ -77,7 +77,7 @@ int ConstantesNum()
 			}
 			
 			}
-			while(option2!=2);
+			while(option2<2|| option>1);
 	}
 	else
 	{
