@@ -904,6 +904,8 @@ int operacionesIntegrales(){
 					}		
 				}while(opcion2<0 || opcion2>2);
 				
+				
+				
 		break;
 }
 }
