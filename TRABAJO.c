@@ -15,6 +15,7 @@ int operacionesMatrices();
 int datosTablaPeriodica();
 int operacionesBasicas();
 int operacionesComplejas();
+int operacionesIntegrales();
 
 //Menu del trabajo
 int main()
@@ -23,9 +24,9 @@ int main()
 	
 	do
 	{	
-		printf("Elija una opcion: \n 0-Apagar Sistema\n 1-Operaciones Basicas\n 2-Operaciones con Vectores\n 3-Operaciones con Matrices\n 4-Constantes numericas\n 5-Tabla Periodica\n 6-Sistemas de ecuaciones\n 7-Operaciones complejas\n\n");
+		printf("Elija una opcion: \n 0-Apagar Sistema\n 1-Operaciones Basicas\n 2-Operaciones con Vectores\n 3-Operaciones con Matrices\n 4-Constantes numericas\n 5-Tabla Periodica\n 6-Sistemas de ecuaciones\n 7-Operaciones complejas\n 8-Calculos con integrales\n");
 		scanf("%d",&option);
-	if((option<0)||(option>7))
+	if((option<0)||(option>8))
 		{
 			printf("Error 404 Not Found");
 		}
@@ -60,6 +61,9 @@ int main()
 				
 				case 7: printf("Operaciones complejas\n");
 					operacionesComplejas();
+				break;
+				case 8: printf("Operaciones con integrales");
+					operacionesIntegrales();
 				break;
 			}
 		}
@@ -741,5 +745,166 @@ int operacionesComplejas(){
 }
 
 
+int operacionesIntegrales(){
+	
+	int opcion=0, opcion2=0;
+	double exp=0,constante=0, constante2=0, base=0;
+	double i;
+	double a=0, b=0, x=0, z=0; 
 
+	double incremento=1e-6,suma=0,integral=0;
+	printf("Introduzca a y b: ");
+	scanf("%lf %lf",&a,&b);
+	
+	do{
+		printf("Que tipo de funcion es?\n");
+		printf("\n1-sen\n 2-cos\n 3-tan \n 4-Polinomica\n 5-Fracion\n 6-Exponencial(n^x)\n 7-Logaritmo");
+		scanf("%d", &opcion);
+		
+	}while((opcion<0)||(opcion>7));
+
+	switch (opcion){
+		case 1:		
+		
+			printf("sen(a*x^n)\n");
+			printf("Introduzca a\n");
+			scanf("%lf",&constante);
+			printf("Introduzca el grado de x (n):\n");
+			scanf("%lf", &exp);
+			
+			for(i=a;i<=b;i+=incremento){
+				
+			suma += sin(constante* (pow(i,exp))/180.0*3.141592);
+			}
+				integral=suma*incremento;
+				printf("la integral es: %lf\n",integral);
+		break;
+	
+		case 2:
+			
+			printf("sen(a*x^n)\n");
+			printf("Introduzca a\n");
+			scanf("%lf",&constante);
+			printf("Introduzca el grado de x (n):\n");
+			scanf("%lf", &exp);
+			
+			for(i=a;i<=b;i+=incremento){
+				
+			suma += cos(constante* (pow(i,exp))/180.0*3.141592);
+			}
+				integral=suma*incremento;
+				printf("la integral es: %lf\n",integral);
+		break;
+		
+		case 3:
+			
+			printf("sen(a*x^n)\n");
+			printf("Introduzca a\n");
+			scanf("%lf",&constante);
+			printf("Introduzca el grado de x (n):\n");
+			scanf("%lf", &exp);
+			
+			for(i=a;i<=b;i+=incremento){
+				
+			suma += tan(constante* (pow(i,exp))/180.0*3.141592);
+			}
+				integral=suma*incremento;
+				printf("la integral es: %lf\n",integral);
+		break;  
+		
+		case 4: 
+		
+			printf("\n");
+			printf("Introduzca a\n");
+			scanf("%lf",&constante);
+			printf("Introduzca el grado de x (n):\n");
+			scanf("%lf", &exp);
+			
+			for(i=a;i<=b;i+=incremento){
+				
+			suma += cos(constante* (pow(i,exp))/180.0*3.141592);
+			}
+				integral=suma*incremento;
+				printf("la integral es: %lf\n",integral);
+				
+		break;
+		
+		case 5: 
+		
+			printf("a/x\n");
+			printf("Introduzca a\n");
+			scanf("%lf",&constante);
+			printf("Introduzca el grado de x (n):\n");
+			scanf("%lf", &exp);
+			
+			for(i=a;i<=b;i+=incremento){
+				
+			suma += constante / pow(i,exp);
+			}
+				integral=suma*incremento;
+				printf("la integral es: %lf\n",integral);					
+		break;
+		
+		case 6: 
+		
+			printf("z*c^(x^n)\n");
+			printf("Introduzca z (constante)\n");
+			scanf("%lf",&constante);
+			printf("Introduzca c (base)\n");
+			scanf("%lf",&base);
+			printf("Introduzca el grado de x (n):\n");
+			scanf("%lf", &exp);
+			
+			for(i=a;i<=b;i+=incremento){
+				
+			suma += constante * pow(base,pow(i,exp));
+			}
+				integral=suma*incremento;
+				printf("la integral es: %lf\n",integral);		
+		break;
+		
+		case 7:
+			do{
+				printf("¿1-Log\n2-Ln?\n");
+				scanf("%d",&opcion2);
+				
+				if(opcion2 == 1){
+					
+					printf("z*log(c*(x^n))\n");
+					printf("Introduzca z (constante 1)\n");
+					scanf("%lf",&constante);
+					printf("Introduzca c (constante 2)\n");
+					scanf("%lf",&constante2);
+					printf("Introduzca el grado de x (n):\n");
+					scanf("%lf", &exp);
+				
+					for(i=a;i<=b;i+=incremento){
+						
+					suma += constante * log10(constante2 * pow(i,exp));
+					}
+						integral=suma*incremento;
+						printf("la integral es: %lf\n",integral);
+						
+					} else if (opcion2==2) {
+						
+					printf("z*ln(c*(x^n))\n");
+					printf("Introduzca z (constante 1)\n");
+					scanf("%lf",&constante);
+					printf("Introduzca c (constante 2)\n");
+					scanf("%lf",&constante2);
+					printf("Introduzca el grado de x (n):\n");
+					scanf("%lf", &exp);
+				
+					for(i=a;i<=b;i+=incremento){
+						
+					suma += constante * log(constante2 * pow(i,exp));
+					}
+						integral=suma*incremento;
+						printf("la integral es: %lf\n",integral);
+					}		
+				}while(opcion2<0 || opcion2>2);
+				
+		break;
+}
+}
 
