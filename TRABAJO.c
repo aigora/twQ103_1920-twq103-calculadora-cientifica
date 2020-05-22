@@ -125,7 +125,7 @@ int operacionesVectores(){
 		}
 
 	//TERCERO: Elegir una operacion
-		printf("Introduzca la operacion: \n1.Sumar\n2.Restar\n3.Producto vectorial\n4.Producto escalar\n5.Modulo\n6.Angulo\n");
+		printf("Introduzca la operacion:\n1.Sumar\n2.Restar\n3.Producto vectorial\n4.Producto escalar\n5.Modulo\n6.Angulo\n");
 		scanf("%d",&n);
 		switch (n){
 			case 1: //suma
@@ -213,7 +213,7 @@ int operacionesMatrices(){
 		
 	
 	do{
-		printf("Introduzca las filas y columans de la matriz1\n");
+		printf("Introduzca las filas y columnas de la matriz 1\n");
 		scanf("%d",&filas1);
 		scanf("%d",&columnas1);
 	}while(filas1<1 || columnas1<1);
@@ -222,12 +222,12 @@ int operacionesMatrices(){
 	{
 		for(j=0; j<columnas1; j++)
 		{
-			printf("Introduce elemento de la matriz1[%d][%d]\n", i+1, j+1);
+			printf("Introduce elemento de la matriz 1[%d][%d]\n", i+1, j+1);
 			scanf("%f", &m1[i][j]);
 		}
 	}
 	do{
-		printf("Introduzca las filas y columans de la matriz2\n");
+		printf("Introduzca las filas y columnas de la matriz 2\n");
 		scanf("%d",&filas2);
 		scanf("%d",&columnas2);
 	}while(filas2<1 || columnas2<1);
@@ -236,7 +236,7 @@ int operacionesMatrices(){
 	{
 		for(j=0; j<columnas2; j++)
 		{
-			printf("Introduce elemento de la matriz2[%d][%d]\n", i+1, j+1);
+			printf("Introduce elemento de la matriz 2[%d][%d]\n", i+1, j+1);
 			scanf("%f", &m2[i][j]);
 		}
 	}
@@ -370,13 +370,15 @@ int datosTablaPeriodica(){
 							scanf("%f", &tabla[i].masa);
 							fprintf(pfentrada,"\t  %.2f \n", tabla[i].masa);
 							
-							printf("Desea repetir la operacion? 1.-Si\t 2.-No\n");	
-							scanf("%d",&option2b);
-							fflush(stdin);
-						}			
+						
+						}	
+						printf("Desea repetir la operacion? 1.-Si\t 2.-No\n");	
+						scanf("%d",&option2b);
+						fflush(stdin);			
 					fclose(pfentrada);
 					}
 					while(option2b!=2);
+					printf("Hasta pronto...\n");
 				}
 				else {
 					printf("Hasta pronto...\n");
@@ -1130,7 +1132,7 @@ int ConstantesNum()
 						printf("Introduzca los datos de la constante:\n \n");
 						printf("Introduzca el nombre: \t");
 						scanf("%s", tabla[i].nombre);
-						fprintf(pfentrada,"%s\t", tabla[i].nombre);	
+						fprintf(pfentrada,"\n%s\t", tabla[i].nombre);	
 						fflush(stdin);
 					
 						printf("Introduzca el numero: \t");
