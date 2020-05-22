@@ -8,3 +8,4 @@ Nitrogeno		  N 	  7 	  14.01
 Oxigeno		  O 	  8 	  16.00 
 Fluor		  F 	  9 	  19.00 
 Neon		  Ne 	  10 	  20.18 
+titanio		  Ti 	  22 	  47.87 
