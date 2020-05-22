@@ -453,11 +453,13 @@ int datosTablaPeriodica(){
 										printf("Nombre \t\t Simbolo\t Numero Atomico\t Masa atomica\n");
 										printf("%s\t\t %s\t\t %d\t\t %f\n", tabla[i].nombre,tabla[i].simbolo,tabla[i].nAtomico,tabla[i].masa);
 										break;
-									}else if(strcmp(tabla[i].nombre, nomBuscado) != 0){
+									}
+								}	
+								 if(strcmp(tabla[i].nombre, nomBuscado) != 0){
 										printf("Error 404. Element Not Found. Code: PFO\n");
-										break;
+										
 									}	
-								}
+								
 									
 								fclose(pfentrada);
 							break;
@@ -487,14 +489,13 @@ int datosTablaPeriodica(){
 										printf("Nombre \t\t Simbolo\t Numero Atomico\t Masa atomica\n");
 										printf("%s\t\t %s\t\t %d\t\t %f\n", tabla[i].nombre,tabla[i].simbolo,tabla[i].nAtomico,tabla[i].masa);
 										break;
-									}else if(strcmp(tabla[i].simbolo, simBuscado) != 0){
-										printf("Error 404. Element Not Found. Code: PFO\n");
-										break;
-									 	
 									}
-								}
-	
+								}	
+										 if(strcmp(tabla[i].simbolo, simBuscado) != 0){
 										printf("Error 404. Element Not Found. Code: PFO\n");
+											 	
+									}
+				
 										
 								fclose(pfentrada);
 							break;
@@ -526,11 +527,13 @@ int datosTablaPeriodica(){
 										printf("Nombre \t\t Simbolo\t Numero Atomico\t Masa atomica\n");
 										printf("%s\t\t %s\t\t %d\t\t %.2f\n", tabla[i].nombre,tabla[i].simbolo,tabla[i].nAtomico,tabla[i].masa);
 										break;
-									}else if(numBuscado!=tabla[i].nAtomico){
+									}
+								}	
+								 if(numBuscado!=tabla[i].nAtomico){
 										printf("Error 404. Element Not Found. Code: PFO\n");
 										break;
 									}	
-								}	 	
+									 	
 								
 								fclose(pfentrada);
 							break;
