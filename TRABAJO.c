@@ -1067,48 +1067,76 @@ void ResuelveGauss(int Dim, float Sist[][102])
 
 int ConstantesNum()
 {
-	float A,B,C,a,b,c,d;
-	float x1,x2,x3;
-	int opt;
+	int i,j;
+	FILE *pfentrada;
+	struct TConstante tabla[200];
+	int option,option2,N=0;
 	
-	printf("Que ecuacion quier de segundo o tercer grado? 1 o 2\n");
-	scanf("%d",&opt);
-	if(opt==1)
-	{	
-		printf("Introduzca datos de Ecuacion de Segundo grado\n Ax^2+Bx+C=0\n");
-		scanf("A: %f, B: %f, C: %f",&A,&B,&C);
-		
-		if(((pow(B,2))-4*A*C)<0)
-		{
-			printf("Sus resultados estan en el espectro de numeros imaginarios:\n"),
-			x1=sqrt((pow(B,2)-4*A*C)/(-1));
-			x2=sqrt((pow(B,2)-4*A*C)/(-1));
-			printf("x1: -%f-%f i\n",B/(2*A),x1/(2*A));
-			printf("x2: -%f+%f i\n",B/(2*A),x2/(2*A));
-		}
-	 	else if(((pow(B,2))-4*A*C)>0)
-		{
-			printf("Sus resultados estan en el espectro de numeros reales:\n"),
-			x1=(-B-sqrt(pow(B,2)-4*A*C))/(2*A);
-			x2=(-B+sqrt(pow(B,2)-4*A*C))/(2*A);
-			printf("x1: %f\n",x1);
-			printf("x2: %f\n",x2);
-		}	
-	}
-	else if(opt==2)
-	{	
-		printf("Introduzca datos de ecuacion de tercer grado\n ax3 + bx2 + cx + d = 0\n");
-		scanf("a: %f, b: %f, c: %f, d: %f",&a,&b,&c,&d);
 	
-		x1 = -b/(3*a) - (pow(2,1/3)*-pow(b,2) + 3*a*c)/pow((3*a*(-2*pow(b,2) + 9*a*b*c - 27*pow(a,2)*d + sqrt(4*pow((pow(-b,2) + 3*a*c),3) + (-2*pow(b,3) + 9*a*b*c - 27*pow(a,2)*d))),(1/3)) + pow((-2*pow(b,3) + 9*a*b*c - 27*pow(a,2)*d + Sqrt(4*(pow(pow(-b,2) + 3*a*c),3) + pow((-2*pow(b,3) + 9*a*b*c - 27*pow(a,2)*d),2)),(1/3))/(3*pow(2,(1/3))*a);
-		x2 = -b/(3*a) + ((1 + i*Sqrt[3])*(pow(-b,2)+ 3*a*c))/(3*pow(2,(2/3))*a*pow((-2*pow(b,3) + 9*a*b*c - 27*pow(a,2)*d + sqrt(4*pow((-pow(b,2)+ 3*a*c),3) + pow((-2*pow(b,3)+ 9*a*b*c - 27*pow(a,2)*d),2)),(1/3)))- (1 - i*sqrt(3))*pow((-2*pow(b,3)+ 9*a*b*c - 27*pow(a,2)*d + sqrt(4*pow((-pow(b,2) + 3*a*c),3) + pow((-2*pow(b,3)+ 9*a*b*c - 27*pow(a,2)*d),2)),(1/3))/(6*pow(2,(1/3))*a);
-		x3 = -b/(3*a) + ((1 - i*Sqrt[3])*(pow(-b,2)+ 3*a*c))/(3*pow(2,(2/3))*a*pow((-2*pow(b,3) + 9*a*b*c - 27*pow(a,2)*d + sqrt(4*pow((-pow(b,2)+ 3*a*c),3) + pow((-2*pow(b,3)+ 9*a*b*c - 27*pow(a,2)*d),2))),(1/3)))- (1 + i*sqrt(3))*pow((-2*pow(b,3)+ 9*a*b*c - 27*pow(a,2)*d + sqrt(4*pow((-pow(b,2) + 3*a*c),3) + pow((-2*pow(b,3)+ 9*a*b*c - 27*pow(a,2)*d),2))),(1/3))/(6*pow(2,(1/3))*a);
+		printf("Has elegido constantes numericas.\n");
+		printf("\n Quieres salir de esta opcion? 1.-Si\t 2.-No\n");
+		scanf("%d",&option2);
 
-		printf("x1: %f\n",x1);
-		printf("x2: %f\n",x2);
-		printf("x3: %f\n",x3);
+
+		if(option2==2)
+		{
+			do
+			{	
+				printf("Que desea hacer?\n 1.-Registrar Constantes \n 2.-Mostrar tabla\n");
+				scanf("%d",&option);
 	
+				if(option==1)
+				{    		
+					printf("Cuantas constantes quiere registrar?\n");
+					scanf("%d",&N);
+					pfentrada=fopen("tabla2.txt","w");	
+					//pido los datos al usuario sobre los elementos
+
+					for(i=0;i<N;i++)
+					{
+						printf("Introduzca los datos de la constante:\n \n");
+						printf("Introduzca el nombre: \t");
+						scanf("%s", tabla[i].nombre);
+						fprintf(pfentrada,"%s\t", tabla[i].nombre);	
+						fflush(stdin);
+					
+						printf("Introduzca el numero: \t");
+						scanf("%f", tabla[i].numero);	
+						fprintf(pfentrada,"\t  %f ", tabla[i].numero);
+						fflush(stdin);
+				}			
+
+			fclose(pfentrada);
+			}
+			else if(option==2)
+			{
+					pfentrada=fopen("tabla2.txt","r");
+	
+					if(pfentrada== NULL)
+					{
+						printf("No se ha encontrado un fichero con ese nombre.\n");
+						return 0;
+					}			
+					
+					j=0;
+					printf("Nombre \t\t numero \n");
+					while(fscanf(pfentrada,"%s %f", tabla[j].nombre, tabla[j].numero)!=EOF)
+					{
+						printf("%s\t\t %f\n", tabla[j].nombre,tabla[j].numero);
+						j++;
+						
+					}
+					fclose(pfentrada);
+			}
+			
+			}
+			while(option2!=2);
 	}
+	else
+	{
+		printf("Apagando...");
+	}
+}
 	
 }
 
