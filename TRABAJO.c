@@ -12,7 +12,7 @@ struct TElemento
 struct TConstante 
 {
 	char nombre[50];
-	float numero;
+	float numero[50];
 };
 
 int operacionesVectores();
@@ -1082,10 +1082,12 @@ int ConstantesNum()
 	struct TConstante tabla[200];
 	int option,option2,N=0;
 	
-	
+		do{
 		printf("Has elegido constantes numericas.\n");
 		printf("\n Quieres salir de esta opcion? 1.-Si\t 2.-No\n");
-		scanf("%d",&option2);
+		scanf("%d",&option2);	
+		}while(option2<1||option2>2);
+		
 
 
 		if(option2==2)
@@ -1094,12 +1096,12 @@ int ConstantesNum()
 			{	
 				printf("Que desea hacer?\n 1.-Registrar Constantes \n 2.-Mostrar tabla\n");
 				scanf("%d",&option);
-	
+			}while(option<1||option>2);
 				if(option==1)
 				{    		
 					printf("Cuantas constantes quiere registrar?\n");
 					scanf("%d",&N);
-					pfentrada=fopen("tabla2.txt","w");	
+					pfentrada=fopen("tabla2.txt","a");	
 					//pido los datos al usuario sobre los elementos
 
 					for(i=0;i<N;i++)
@@ -1111,8 +1113,8 @@ int ConstantesNum()
 						fflush(stdin);
 					
 						printf("Introduzca el numero: \t");
-						scanf("%f", tabla[i].numero);	
-						fprintf(pfentrada,"\t  %f ", tabla[i].numero);
+						scanf("%s", tabla[i].numero);	
+						fprintf(pfentrada,"\t  %s \n", tabla[i].numero);
 						fflush(stdin);
 				}			
 
@@ -1130,21 +1132,19 @@ int ConstantesNum()
 					
 					j=0;
 					printf("Nombre \t\t numero \n");
-					while(fscanf(pfentrada,"%s %f", tabla[j].nombre, tabla[j].numero)!=EOF)
+					while(fscanf(pfentrada,"%s %s", tabla[j].nombre, tabla[j].numero)!=EOF)
 					{
-						printf("%s\t\t %f\n", tabla[j].nombre,tabla[j].numero);
+						printf("%s\t\t %s\n", tabla[j].nombre,tabla[j].numero);
 						j++;
 						
 					}
+					printf("\n\n");
 					fclose(pfentrada);
-			}
-			
-			}
-			while(option2!=2);
+			}	
 	}
 	else
 	{
-		printf("Apagando...");
+		printf("Apagando...\n\n");
 	}
 }
 	
