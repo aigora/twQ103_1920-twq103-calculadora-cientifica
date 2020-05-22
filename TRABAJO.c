@@ -9,6 +9,11 @@ struct TElemento
 	int nAtomico;
 	float masa;
 };
+struct TConstante 
+{
+	char nombre[50];
+	float numero;
+};
 
 int operacionesVectores();
 int operacionesMatrices();
@@ -1138,5 +1143,5 @@ int ConstantesNum()
 	}
 }
 	
-}
+
 
