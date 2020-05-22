@@ -23,9 +23,9 @@ int main()
 	
 	do
 	{	
-		printf("Elija una opcion: \n 0-Apagar Sistema\n 1-Operaciones Basicas\n 2-Operaciones con Vectores\n 3-Operaciones con Matrices\n 4-Constantes numericas\n 5-Tabla Periodica\n 6-Sistemas de ecuaciones\n 7-Operaciones complejas\n\n");
+		printf("Elija una opcion: \n 0-Apagar Sistema\n 1-Operaciones Basicas\n 2-Operaciones con Vectores\n 3-Operaciones con Matrices\n 4-Constantes numericas\n 5-Tabla Periodica\n 6-Sistemas de ecuaciones\n 7-Operaciones complejas\n 8-Operaciones con integrales\n");
 		scanf("%d",&option);
-	if((option<0)||(option>7))
+	if((option<0)||(option>8))
 		{
 			printf("Error 404 Not Found");
 		}
@@ -61,6 +61,11 @@ int main()
 				case 7: printf("Operaciones complejas\n");
 					operacionesComplejas();
 				break;
+				
+				case 8: printf("Operaciones con integrales");
+					operacionesIntegrales();
+				break;
+					
 			}
 		}
 	}
@@ -769,9 +774,7 @@ int operacionesComplejas(){
 }
 
 
-<<<<<<< Updated upstream
 
-=======
 int operacionesIntegrales(){
 	
 	int opcion=0, opcion2=0;
@@ -930,12 +933,9 @@ int operacionesIntegrales(){
 						integral=suma*incremento;
 						printf("la integral es: %lf\n",integral);
 					}		
-				}while(opcion2<0 || opcion2>2);
-				
-				
-				
+				}while(opcion2<0 || opcion2>2);				
 		break;
 }
 }
->>>>>>> Stashed changes
+
 
