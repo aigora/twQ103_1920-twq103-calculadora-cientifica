@@ -15,6 +15,7 @@ int operacionesMatrices();
 int datosTablaPeriodica();
 int operacionesBasicas();
 int operacionesComplejas();
+int operacionesIntegrales();
 int sistemasEcuaciones();
 	
 	void PideDatos(int *Dim, float Sist[][102]);
