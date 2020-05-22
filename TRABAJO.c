@@ -319,23 +319,31 @@ int datosTablaPeriodica(){
 		char nomBuscado[20], simBuscado[4];
 		int numBuscado=0;
 		int i,j;
-
-			printf("Que desea hacer?\n 1.-Registrar Elementos \n 2.-Mostrar tabla\n 3.-Buscar elemento\n 4.-Apagar Calculadora (Ir al menu)\n");
+			do{
+				printf("Que desea hacer?\n 1.-Registrar Elementos \n 2.-Mostrar tabla\n 3.-Buscar elemento\n 4.-Apagar Calculadora (Ir al menu)\n");
 			scanf("%d",&option);
+			}while(option<0 || option>4);
+			
 			
 			switch (option)
 			{
 			case 1 : //Registramos elementos
 			{
 				printf("Has elegido registrar elementos.\n");
-				printf("\n Quieres salir de esta opcion? 1.-Si\t 2.-No\n");
-				scanf("%d",&option2a);
+				do{
+					printf("\n Quieres salir de esta opcion? 1.-Si\t 2.-No\n");
+					scanf("%d",&option2a);
+				}while(option2a<0 || option2a>2);
+				
 			
 				if(option2a==2){
 					do
 					{	
-						printf("Cuantos elementos quiere registrar?\n");
-						scanf("%d",&N);
+						do{
+							printf("Cuantos elementos quiere registrar?\n");
+							scanf("%d",&N);
+						}while(N<1);
+						
 			
 						pfentrada=fopen("tabla1.txt","a");	
 						//pido los datos al usuario sobre los elementos
@@ -371,6 +379,7 @@ int datosTablaPeriodica(){
 					while(option2b!=2);
 				}
 				else {
+					printf("Hasta pronto...\n");
 					return 0;
 				}
 			break;
@@ -403,14 +412,20 @@ int datosTablaPeriodica(){
 			
 			case 3: //Buscar el Elemento
 			{	
+			do{
 				printf("Usted ha seleccionado Buscar Elemento.\n Quieres salir de esta opcion? \n 1.-Si\t 2.-No\n");
 				scanf("%d",&option3);
+			  }while(option3<0 || option3>2);
+				
 				if(option3==2)
 				{
 					do
 					{
-						printf("Desea buscar un elemento por: 1.-Nombre 2.-Simbolo 3.-Numero Atomico ?\n");
-						scanf("%d",&option3a);							
+						do{
+							printf("Desea buscar un elemento por: 1.-Nombre 2.-Simbolo 3.-Numero Atomico ?\n");
+							scanf("%d",&option3a);
+						}while(option3a<0 || option3a>3);
+													
 						switch (option3a)															
 						{
 							case 1: //Buscamos por nombre usando strcomp
@@ -438,12 +453,12 @@ int datosTablaPeriodica(){
 										printf("Nombre \t\t Simbolo\t Numero Atomico\t Masa atomica\n");
 										printf("%s\t\t %s\t\t %d\t\t %f\n", tabla[i].nombre,tabla[i].simbolo,tabla[i].nAtomico,tabla[i].masa);
 										break;
-									}
-									else
-									{
+									}else if(strcmp(tabla[i].nombre, nomBuscado) != 0){
 										printf("Error 404. Element Not Found. Code: PFO\n");
-									}		
+										break;
+									}	
 								}
+									
 								fclose(pfentrada);
 							break;
 							}
@@ -472,12 +487,15 @@ int datosTablaPeriodica(){
 										printf("Nombre \t\t Simbolo\t Numero Atomico\t Masa atomica\n");
 										printf("%s\t\t %s\t\t %d\t\t %f\n", tabla[i].nombre,tabla[i].simbolo,tabla[i].nAtomico,tabla[i].masa);
 										break;
-									}
-									else
-									{
+									}else if(strcmp(tabla[i].simbolo, simBuscado) != 0){
 										printf("Error 404. Element Not Found. Code: PFO\n");
-									}		
+										break;
+									 	
+									}
 								}
+	
+										printf("Error 404. Element Not Found. Code: PFO\n");
+										
 								fclose(pfentrada);
 							break;
 							}
@@ -498,38 +516,37 @@ int datosTablaPeriodica(){
 										j++;
 										contador++;
 									}
-									printf("Lineas: %d",contador);
+									printf("\nLineas: %d\n",contador);
 								printf("Introduzca el numero atomico del elemento:\n ");
 								scanf("%d",&numBuscado);
 								for (i=0; i<contador; i++)
 								{
 									if (numBuscado==tabla[i].nAtomico) 
 									{	
-										
 										printf("Nombre \t\t Simbolo\t Numero Atomico\t Masa atomica\n");
 										printf("%s\t\t %s\t\t %d\t\t %.2f\n", tabla[i].nombre,tabla[i].simbolo,tabla[i].nAtomico,tabla[i].masa);
 										break;
-									}
-								}	
-								 if(numBuscado!=tabla[i].nAtomico)
-									{
-									printf("No hay elementos con ese valor");
-								
-									}		
+									}else if(numBuscado!=tabla[i].nAtomico){
+										printf("Error 404. Element Not Found. Code: PFO\n");
+										break;
+									}	
+								}	 	
 								
 								fclose(pfentrada);
 							break;
-							}
+						
 			
 						}
 						printf("Desea repetir la operacion? 1.-Si\t 2.-No\n");
 						scanf("%d",&option3b);
 					}
-					while(option3b!=1);
+				}
+					while(option3b==1);
+					printf("Hasta pronto...\n");
 				} 
 				else
 				{
-					printf("Que tenga un buen dia.\n Apagando Calculadora...");
+					printf("Que tenga un buen dia.\n Apagando Calculadora...\n\n");
 				}
 			
 				break;	
@@ -541,6 +558,7 @@ int datosTablaPeriodica(){
 			}
 			
 }
+
 
 int operacionesBasicas(){
 	
