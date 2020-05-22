@@ -503,7 +503,10 @@ int datosTablaPeriodica(){
 
 int operacionesBasicas(){
 	
-		int ope,ope1;
+	float A,B,C,a,b,c,d;
+	float x1,x2,x3;
+	int opt;
+	int ope,ope1;
 	int i;
 	float numeros[100],x,y;
 	int N;
@@ -511,7 +514,7 @@ int operacionesBasicas(){
 	do
 	{
 		printf("NOTA: TENGA EN CUENTA QUE LOS DECIMALES SE ESCRIBEN CON '.' Y NO ','\n");
-		printf("Introduzca el tipo de operación que quiere hacer: \n 1.-Suma 2.-Resta 3.-Multiplicacion 4.-Division 5.-Media 6.-Desviacion\n 7.-Me he equivocado, no queria encender la calculadora\n");
+		printf("Introduzca el tipo de operación que quiere hacer: \n 1.-Suma 2.-Resta 3.-Multiplicacion 4.-Division 5.-Media 6.-Desviacion\n 7.-Ecuacion de segundo grado\n 8.-Me he equivocado, no queria encender la calculadora\n");
 		scanf("%d",&ope1);
 		
 		switch(ope1)
@@ -616,8 +619,32 @@ int operacionesBasicas(){
 				printf("La desviacion tipica es: %f.\n",desv);
 				printf("La media es: %f.\n",med);
 			break;
-			
-			case 7://Me he equivocado no queria encender la calculadora
+			case 7:
+					
+					printf("Introduzca datos de Ecuacion de Segundo grado\n Ax^2+Bx+C=0\n");
+					fflush(stdin);
+					scanf(" %f %f %f",&A,&B,&C);
+		
+					if(((pow(B,2))-4*A*C)<0)
+					{
+						printf("Sus resultados estan en el espectro de numeros imaginarios:\n"),
+						x1=sqrt((pow(B,2)-4*A*C)/(-1));
+						x2=sqrt((pow(B,2)-4*A*C)/(-1));
+						printf("x1: -%f-%f i\n",B/(2*A),x1/(2*A));
+						printf("x2: -%f+%f i\n",B/(2*A),x2/(2*A));
+					}
+	 				
+					 else if(((pow(B,2))-4*A*C)>0)
+					{
+						printf("Sus resultados estan en el espectro de numeros reales:\n"),
+						x1=(-B-sqrt(pow(B,2)-4*A*C))/(2*A);
+						x2=(-B+sqrt(pow(B,2)-4*A*C))/(2*A);
+						printf("x1: %f\n",x1);
+						printf("x2: %f\n",x2);
+					}	
+		
+			break;
+			case 8://Me he equivocado no queria encender la calculadora
 				printf("Apagando la calculadora...\n");
 			break;
 			
@@ -742,5 +769,173 @@ int operacionesComplejas(){
 }
 
 
+<<<<<<< Updated upstream
 
+=======
+int operacionesIntegrales(){
+	
+	int opcion=0, opcion2=0;
+	double exp=0,constante=0, constante2=0, base=0;
+	double i;
+	double a=0, b=0, x=0, z=0; 
+	double A,B,C,D,E,F;
+	double incremento=1e-6,suma=0,integral=0;
+	printf("Introduzca los intervalos de la integral definida a y b:\t ");
+	scanf("%lf %lf",&a,&b);
+	
+	do{
+		printf("Que tipo de funcion es?\n");
+		printf("\n1-sen\n 2-cos\n 3-tan \n 4-Polinomica\n 5-Fracion\n 6-Exponencial(n^x)\n 7-Logaritmo");
+		scanf("%d", &opcion);
+		
+	}while((opcion<0)||(opcion>7));
+
+	switch (opcion){
+		case 1:		
+		
+			printf("sen(a*x^n)\n");
+			printf("Introduzca a\n");
+			scanf("%lf",&constante);
+			printf("Introduzca el grado de x (n):\n");
+			scanf("%lf", &exp);
+			
+			for(i=a;i<=b;i+=incremento){
+				
+			suma += sin(constante* (pow(i,exp))/180.0*3.141592);
+			}
+				integral=suma*incremento;
+				printf("la integral es: %lf\n",integral);
+		break;
+	
+		case 2:
+			
+			printf("sen(a*x^n)\n");
+			printf("Introduzca a\n");
+			scanf("%lf",&constante);
+			printf("Introduzca el grado de x (n):\n");
+			scanf("%lf", &exp);
+			
+			for(i=a;i<=b;i+=incremento){
+				
+			suma += cos(constante* (pow(i,exp))/180.0*3.141592);
+			}
+				integral=suma*incremento;
+				printf("la integral es: %lf\n",integral);
+		break;
+		
+		case 3:
+			
+			printf("sen(a*x^n)\n");
+			printf("Introduzca a\n");
+			scanf("%lf",&constante);
+			printf("Introduzca el grado de x (n):\n");
+			scanf("%lf", &exp);
+			
+			for(i=a;i<=b;i+=incremento){
+				
+			suma += tan(constante* (pow(i,exp))/180.0*3.141592);
+			}
+				integral=suma*incremento;
+				printf("la integral es: %lf\n",integral);
+		break;  
+		
+		case 4: 
+		
+			printf("\n");
+			printf("Puede llegar a hacer  integrales polinomicas de hasta grado 5:Ax+Bx^2+Cx^3+Dx^4+Ex^5+F \n");
+			//Ax+B+C+D+Ex^5
+			printf("Introduzca los numeros, si no tiene un elemento ponga un 0 y si es negativo escriba: '-'\n");
+			scanf("%lf %lf %lf %lf %lf %lf",&A, &B, &C, &D, &E, &F);
+			
+			
+			for(i=a;i<=b;i+=incremento){
+				
+				suma += (A*(pow(i,1))+B*(pow(i,2))+C*(pow(i,3))+D*(pow(i,4))+E*(pow(i,5))+F*(pow(i,0)));
+			}
+				integral=suma*incremento;
+				printf("la integral es: %lf\n",integral);
+				
+		break;
+		
+		case 5: 
+		
+			printf("a/x\n");
+			printf("Introduzca a\n");
+			scanf("%lf",&constante);
+			printf("Introduzca el grado de x (n):\n");
+			scanf("%lf", &exp);
+			
+			for(i=a;i<=b;i+=incremento){
+				
+			suma += constante / pow(i,exp);
+			}
+				integral=suma*incremento;
+				printf("la integral es: %lf\n",integral);					
+		break;
+		
+		case 6: 
+		
+			printf("z*c^(x^n)\n");
+			printf("Introduzca z (constante)\n");
+			scanf("%lf",&constante);
+			printf("Introduzca c (base)\n");
+			scanf("%lf",&base);
+			printf("Introduzca el grado de x (n):\n");
+			scanf("%lf", &exp);
+			
+			for(i=a;i<=b;i+=incremento){
+				
+			suma += constante * pow(base,pow(i,exp));
+			}
+				integral=suma*incremento;
+				printf("la integral es: %lf\n",integral);		
+		break;
+		
+		case 7:
+			do{
+				printf("¿1-Log\n2-Ln?\n");
+				scanf("%d",&opcion2);
+				
+				if(opcion2 == 1){
+					
+					printf("z*log(c*(x^n))\n");
+					printf("Introduzca z (constante 1)\n");
+					scanf("%lf",&constante);
+					printf("Introduzca c (constante 2)\n");
+					scanf("%lf",&constante2);
+					printf("Introduzca el grado de x (n):\n");
+					scanf("%lf", &exp);
+				
+					for(i=a;i<=b;i+=incremento){
+						
+					suma += constante * log10(constante2 * pow(i,exp));
+					}
+						integral=suma*incremento;
+						printf("la integral es: %lf\n",integral);
+						
+					} else if (opcion2==2) {
+						
+					printf("z*ln(c*(x^n))\n");
+					printf("Introduzca z (constante 1)\n");
+					scanf("%lf",&constante);
+					printf("Introduzca c (constante 2)\n");
+					scanf("%lf",&constante2);
+					printf("Introduzca el grado de x (n):\n");
+					scanf("%lf", &exp);
+				
+					for(i=a;i<=b;i+=incremento){
+						
+					suma += constante * log(constante2 * pow(i,exp));
+					}
+						integral=suma*incremento;
+						printf("la integral es: %lf\n",integral);
+					}		
+				}while(opcion2<0 || opcion2>2);
+				
+				
+				
+		break;
+}
+}
+>>>>>>> Stashed changes
 
