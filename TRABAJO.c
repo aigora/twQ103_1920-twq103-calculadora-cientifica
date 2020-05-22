@@ -86,11 +86,11 @@ int main()
 int operacionesVectores(){
 	
 	int d;//determinar la dmension del vector
-	int x,y,z; // coordenadas de los vectores
+	float x,y,z; // coordenadas de los vectores
 	int n;// switch de operaciones
 	int i;// bucles for
 	int op1=0;// primer bucle while
-	int v1[d],v2[d],v3[d];//v1 y v2 son introducidos por teclado y v3 es el vector resultado
+	float v1[d],v2[d],v3[d];//v1 y v2 son introducidos por teclado y v3 es el vector resultado
 	float sum=0.0;
 	float sumatorio1=0, resultado1=0,sumatorio2=0, resultado2=0;
 	float angulo=0.0;
@@ -109,12 +109,12 @@ int operacionesVectores(){
 		for(i=0; i<d; i++){
 			
 			printf("Introduzca el valor %d del vector 1: ",i+1);
-			scanf("%d", &v1[i]);
+			scanf("%f", &v1[i]);
 		}
 		//vector 2
 		for(i=0; i<d; i++){
 			printf("Introduzca el valor %d del vector 2: ",i+1);
-			scanf("%d", &v2[i]);
+			scanf("%f", &v2[i]);
 		}
 
 	//TERCERO: Elegir una operacion
@@ -124,14 +124,14 @@ int operacionesVectores(){
 			case 1: //suma
 				for(i=0;i<d;i++){
 				v3[i]=  v1[i] + v2[i];
-				printf("%d ",v3[i]);
+				printf("%.2f ",v3[i]);
 				}
 			break;
 			
 			case 2: //resta
 				for(i=0;i<d;i++){
 				v3[i]=  v1[i] - v2[i];
-				printf("%d ",v3[i]);
+				printf("%.2f ",v3[i]);
 				}
 			break;
 			
@@ -140,10 +140,10 @@ int operacionesVectores(){
 					x = v1[1]*v2[2] - v1[2]*v2[1];
 					y = v1[0]*v2[2] - v1[2]*v2[0];
 					z = v1[0]*v2[1] - v1[1]*v2[0];
-					printf("%d %d %d",x,y,z);
+					printf("%.2f %.2f %.2f",x,y,z);
 				}else if(d == 2){
 					z = v1[0]*v2[1] - v1[1]*v2[0];
-					printf("%d k",z);// el vector resultante sale del plano en el que estan v1 y v2
+					printf("%.2f k",z);// el vector resultante sale del plano en el que estan v1 y v2
 				}				
 			break;		
 				
@@ -152,7 +152,7 @@ int operacionesVectores(){
 				{
 				sum +=  v1[i] * v2[i];
 				}
-				printf("Resultado = %d",sum);
+				printf("Resultado = %.2f",sum);
 			break;
 			
 			case 5: //modulo = raiz cuadrada (x^2 + y^2 + z^2) 
@@ -164,8 +164,8 @@ int operacionesVectores(){
 					sumatorio2 += pow(v2[i],2);
 				}
 				resultado2 = sqrt(sumatorio2);
-				printf("Modulo v1 = %f\n",resultado1);
-				printf("Modulo v2 = %f",resultado2);
+				printf("Modulo v1 = %.2f\n",resultado1);
+				printf("Modulo v2 = %.2f",resultado2);
 			break;
 			
 			case 6: 							//cos (A) = producto escalar / (modulo_v1 * modulo_v2)
@@ -183,7 +183,7 @@ int operacionesVectores(){
 				resultado2 = sqrt(sumatorio2);
 				//ahora se halla el arcos del angulo
 				angulo = acos(sum / sqrt(sumatorio1 * sumatorio2));//tener en cuenta que nos el resultado en radianes
-				printf("Angulo = %f grados",angulo*(180.000000)/3.141592);
+				printf("Angulo = %.2f grados",angulo*(180.000000)/3.141592);
 				break;
 		}while(n>5 || n<0);
 		
@@ -199,42 +199,47 @@ int operacionesMatrices(){
 	
 	int i,j, op1=0;
 	int filas1=0,filas2=0,filas3=0,columnas1=0,columnas2=0,columnas3=0;
-	int m1[100][100],m2[100][100],m3[100][100];
-	int a,aux,contador;
+	float m1[100][100],m2[100][100],m3[100][100],aux;
+	int a,contador;
 	
 	do{
 		
 	
+	do{
+		printf("Introduzca las filas y columans de la matriz1\n");
+		scanf("%d",&filas1);
+		scanf("%d",&columnas1);
+	}while(filas1<1 || columnas1<1);
 	
-	printf("Introduzca las filas y columans de la matriz1\n");
-	scanf("%d",&filas1);
-	scanf("%d",&columnas1);
 	for(i=0; i<filas1; i++)
 	{
 		for(j=0; j<columnas1; j++)
 		{
 			printf("Introduce elemento de la matriz1[%d][%d]\n", i+1, j+1);
-			scanf("%d", &m1[i][j]);
+			scanf("%f", &m1[i][j]);
 		}
 	}
+	do{
+		printf("Introduzca las filas y columans de la matriz2\n");
+		scanf("%d",&filas2);
+		scanf("%d",&columnas2);
+	}while(filas2<1 || columnas2<1);
 	
-	printf("Introduzca las filas y columans de la matriz2\n");
-	scanf("%d",&filas2);
-	scanf("%d",&columnas2);
 	for(i=0; i<filas2; i++)
 	{
 		for(j=0; j<columnas2; j++)
 		{
 			printf("Introduce elemento de la matriz2[%d][%d]\n", i+1, j+1);
-			scanf("%d", &m2[i][j]);
+			scanf("%f", &m2[i][j]);
 		}
 	}
 	
 	printf("Que desea hacer:\n 1-Sumar(s)\n 2-Restar(r)\n 3-Multiplicar(m)\n");
 	scanf("%d", &a);
+	printf("\n\n");
 	
 	switch (a){
-		case 1:
+		case 1://sumar
 			if((filas1==filas2) && (columnas1==columnas2))
 			{
 				for(i=0; (i<filas1)&&(i<filas2); i++)
@@ -242,14 +247,14 @@ int operacionesMatrices(){
 					for(j=0; (j<columnas1)&&(i<columnas2); j++)
 						{
 							m3[i][j] = m1[i][j] + m2[i][j];
-							printf("%d ", m3[i][j]);
+							printf("%.2f ", m3[i][j]);
 						}
 						printf("\n");
 					}
 				}
 			
 			break;
-		case 2:
+		case 2://restar
 			if((filas1==filas2) && (columnas1==columnas2))
 			{
 			for(i=0; (i<filas1)&&(i<filas2); i++)
@@ -257,14 +262,14 @@ int operacionesMatrices(){
 				for(j=0; (j<columnas1)&&(i<columnas2); j++)
 					{
 						m3[i][j] = m1[i][j] - m2[i][j];
-						printf("%d ", m3[i][j]);
+						printf("%.2f ", m3[i][j]);
 					}
 					printf("\n");
 				}
 			}
 			break;
 					
-		case 3:
+		case 3://multiplicar
 			if(columnas1==filas2)
 			{
 				for(i=0; i<filas1; i++)
@@ -283,7 +288,7 @@ int operacionesMatrices(){
 			{
 				for(j=0; j<columnas2;j++)
 				{
-					printf("%d \t",m3[i][j]);
+					printf("%.2f \t",m3[i][j]);
 				}
 				printf("\n");
 			}	
